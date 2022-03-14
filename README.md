@@ -1,5 +1,5 @@
 # Shanes-cocktail-app
-
+--Using the [Cocktail API](https://www.thecocktaildb.com/api.php)--
 # Technologies used
 --This app will utilize CSS, JavaScript, node, mongoose, liquid and express--
 
