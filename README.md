@@ -1,4 +1,11 @@
 # Shanes-cocktail-app
+--For this application, a--
+
+# Technologies used
+--This app will utilize CSS, JavaScript, node, mongoose, liquid and express--
+
+# Installs
+--npm i mongoose method-override express liquid liquid-express-views morgan dotenv bcrypt--
 
 # Users Story
 --an app designed to help you find the perfect drink for the perfect occasion--
@@ -51,4 +58,5 @@
 --The users will be able to edit a created drink in the edit a drink page--
 
 
-# Stretch goals
+![img](img/cockDie.jpeg)
+--The ERD showing the relationships between models and the user--
