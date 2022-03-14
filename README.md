@@ -14,12 +14,12 @@
 7. The user will be able to access a 'mix it up' button on the nav bar that will take them to a random drink show page
 ---
 
---Wireframes--
-![img](img/cock4.jpeg)
+#Wireframes
+![img](img/cock4.jpeg) ![img](img/cock3.jpeg)
 --The home page where users will be able to see the search categories and the random drink img--
 
 
-![img](img/cock3.jpeg)
+
 --The login to account page--
 
 
