@@ -57,5 +57,5 @@
 --The users will be able to edit a created drink in the edit a drink page--
 
 
-![img](img/realCockDie.jpeg)
+![img](img/finalCockDie.jpeg)
 --The ERD showing the relationships between models and the user--

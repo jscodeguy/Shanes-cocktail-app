@@ -1,0 +1,27 @@
+{% layout 'layout.liquid'%}
+{% block content %}
+<div>
+    <h2 class="display-6">All drinks</h2>
+    <div class="row">
+        {% for drink in drinks %}
+        <div class="card" style="width: 18rem;">
+            <h5 class="card-header">{{ drink.idDrink}}</h5>
+            <div class="card-body">
+                <h5 class="card-title">
+                    Name: {{ drink.strDrink }}
+                </h5>
+                <p class="card-text">
+                    glass: {{ drink.strGlass }}
+                </p>
+                <p class="card-text">
+                    Category: {{ drink.strCategory }}
+                </p>
+                <a href="/drink/{{ drink.id }}" class="btn btn-info">
+                    View {{ drink.title }}
+                </a>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
