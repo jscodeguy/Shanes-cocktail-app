@@ -1,5 +1,4 @@
 # Shanes-cocktail-app
---For this application, a--
 
 # Technologies used
 --This app will utilize CSS, JavaScript, node, mongoose, liquid and express--
@@ -54,7 +53,7 @@
 --The users will be able to create a new drink in the create a drink page--
 
 
-![img](img/cock3.jpeg)
+![img](img/cock7.jpeg)
 --The users will be able to edit a created drink in the edit a drink page--
 
 
