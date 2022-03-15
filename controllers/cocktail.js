@@ -3,7 +3,7 @@ const express = require('express')
 const Drink = require('../models/drink')
 const url = 'https://www.thecocktaildb.com/api/json/v1/1'
 const fetch = require('node-fetch')
-const { json } = require('express/lib/response')
+// const { json } = require('express/lib/response')
 // Create router
 const router = express.Router()
 
@@ -52,7 +52,47 @@ router.get('/', (req, res) => {
 router.get('/category', (req, res) => {
 	let drinkArr
 	
+	// fetch(`${url}/list.php?c=list`)
 	fetch(`${url}/list.php?c=list`)
+	.then((apiResponse) => {
+		console.log(req)
+		return apiResponse.json();
+      })
+      .then((jsonData) => {
+		//console.log(jsonData)
+		drinkArr = jsonData.drinks
+		console.log(drinkArr)
+		res.render('cocktail/category', {drinks: drinkArr})
+	})
+		.catch(error => {
+			res.redirect(`/error?error=${error}`)
+		})
+})
+router.get('/glasses', (req, res) => {
+	let drinkArr
+	
+	// fetch(`${url}/list.php?c=list`)
+	fetch(`${url}/list.php?g=list`)
+	.then((apiResponse) => {
+		console.log(req)
+		return apiResponse.json();
+      })
+      .then((jsonData) => {
+		//console.log(jsonData)
+		drinkArr = jsonData.drinks
+		console.log(drinkArr)
+		res.render('cocktail/glasses', {drinks: drinkArr})
+	})
+		.catch(error => {
+			res.redirect(`/error?error=${error}`)
+		})
+})
+
+router.get('/category/:drink', (req, res) => {
+	let drinkArr
+	let filler = 'Ordinary_Drink'
+	// fetch(`${url}/list.php?c=list`)
+	fetch(`${url}/filter.php?c=${filler}`)
       .then((apiResponse) => {
         return apiResponse.json();
       })
@@ -60,7 +100,7 @@ router.get('/category', (req, res) => {
 		//console.log(jsonData)
 		drinkArr = jsonData.drinks
 		console.log(drinkArr)
-		res.render('cocktail/category', {drinks: drinkArr})
+		res.render('./cocktail/show', {drinks: drinkArr})
 	})
 		.catch(error => {
 			res.redirect(`/error?error=${error}`)
