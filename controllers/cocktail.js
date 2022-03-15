@@ -49,11 +49,29 @@ router.get('/', (req, res) => {
 		})
 })
 
+// alcoholic route
+router.get('/alcoholic', (req, res) => {
+	let drinkArr
+	fetch(`${url}/list.php?a=list`)
+	.then((apiResponse) => {
+		//console.log(req)
+		return apiResponse.json();
+      })
+      .then((jsonData) => {
+		//console.log(jsonData)
+		
+		drinkArr = jsonData.drinks
+		console.log(drinkArr)
+		res.render('cocktail/alcoholic', {drinks: drinkArr})
+	})
+		.catch(error => {
+			res.redirect(`/error?error=${error}`)
+		})
+})
+
 // category route
 router.get('/category', (req, res) => {
 	let drinkArr
-	
-	// fetch(`${url}/list.php?c=list`)
 	fetch(`${url}/list.php?c=list`)
 	.then((apiResponse) => {
 		//console.log(req)
@@ -70,10 +88,10 @@ router.get('/category', (req, res) => {
 			res.redirect(`/error?error=${error}`)
 		})
 })
+
+//glasses route
 router.get('/glasses', (req, res) => {
 	let drinkArr
-	
-	// fetch(`${url}/list.php?c=list`)
 	fetch(`${url}/list.php?g=list`)
 	.then((apiResponse) => {
 		//console.log(req)
@@ -90,6 +108,52 @@ router.get('/glasses', (req, res) => {
 		})
 })
 
+//alcoholic show route
+router.get('/alcoholic/drink/:filler', (req, res) => {
+	let drinkArr
+	let filler = req.params.filler
+	// let filler
+	// fetch(`${url}/list.php?c=list`)
+	fetch(`${url}/filter.php?a=${filler}`)
+      .then((apiResponse) => {
+        return apiResponse.json();
+      })
+      .then((jsonData) => {
+		//console.log(jsonData)
+		drinkArr = jsonData.drinks
+		console.log(drinkArr)
+		res.render('cocktail/show', {drinks: drinkArr, filler})
+	})
+		.catch(error => {
+			res.redirect(`/error?error=${error}`)
+		})
+})
+
+
+//glasses show route
+router.get('/glasses/drink/:filler', (req, res) => {
+	let drinkArr
+	let filler = req.params.filler
+	// let filler
+	// fetch(`${url}/list.php?c=list`)
+	fetch(`${url}/filter.php?g=${filler}`)
+      .then((apiResponse) => {
+        return apiResponse.json();
+      })
+      .then((jsonData) => {
+		//console.log(jsonData)
+		drinkArr = jsonData.drinks
+		console.log(drinkArr)
+		res.render('cocktail/show', {drinks: drinkArr, filler})
+	})
+		.catch(error => {
+			res.redirect(`/error?error=${error}`)
+		})
+})
+
+
+
+//category show route
 router.get('/category/drink/:filler', (req, res) => {
 	let drinkArr
 	let filler = req.params.filler
