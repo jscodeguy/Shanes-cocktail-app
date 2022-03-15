@@ -13,7 +13,7 @@
 
 1. The user will be greeted with a homescreen prompting them to log in or create an account
 2. The user will be able to type in the search bar for whatever field they're in and see related results
-3. The user will be able to select different categories to search using, such as ingredients, alcoholic or non-alcoholic and categories of drink(cocktail, party drink, ordinary drink etc)
+3. The user will be able to select different categories to search using, such as ingredients, alcoholic or non-alcoholic and categories of drink(cocktail, party drink, ordinary drink etc) and glasses used to serve the drink
 4. The user will be able to save drinks they like to a database that they can see and edit as they please
 5. The drink page will show all ingredients and relevant instructions to prepare the drink as well as providing an image of the drink
 6. At the bottom of the page a random drink image will be displayed which when clicked will take the user to the drink show page
