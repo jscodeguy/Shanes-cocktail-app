@@ -1,0 +1,8 @@
+{%layout 'layout.liquid'%}
+{%block content%}
+
+<h2>alcohol</h2>
+{%for drink in drinks%}
+<a href="{{drink.strAlcoholic}}">{{drink.strAlcoholic}}</p>
+{%endfor%}
+{%endblock%}

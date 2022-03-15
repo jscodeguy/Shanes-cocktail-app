@@ -1,7 +1,7 @@
 // Import Dependencies
 const express = require('express')
 const Drink = require('../models/drink')
-const url = 'https://www.thecocktaildb.com/api/json/v1/1/search.php?s=margarita'
+const url = 'https://www.thecocktaildb.com/api/json/v1/1'
 const fetch = require('node-fetch')
 const { json } = require('express/lib/response')
 // Create router
@@ -26,7 +26,8 @@ router.use((req, res, next) => {
 // index ALL
 router.get('/', (req, res) => {
 	let drinkArr
-	fetch(url)
+	//console.log(req.body)
+	fetch(`${url}/random.php`)
       .then((apiResponse) => {
         return apiResponse.json();
       })
@@ -43,6 +44,24 @@ router.get('/', (req, res) => {
 	// 		const loggedIn = req.session.loggedIn
 	// 		res.render('cocktail/index', { drink: drinkArr, drinkArr, username, loggedIn })
 	// 	})
+		.catch(error => {
+			res.redirect(`/error?error=${error}`)
+		})
+})
+
+router.get('/category', (req, res) => {
+	let drinkArr
+	
+	fetch(`${url}/list.php?c=list`)
+      .then((apiResponse) => {
+        return apiResponse.json();
+      })
+      .then((jsonData) => {
+		//console.log(jsonData)
+		drinkArr = jsonData.drinks
+		console.log(drinkArr)
+		res.render('cocktail/category', {drinks: drinkArr})
+	})
 		.catch(error => {
 			res.redirect(`/error?error=${error}`)
 		})

@@ -1,0 +1,8 @@
+{%layout 'layout.liquid'%}
+{%block content%}
+
+<h2>category form</h2>
+{%for drink in drinks%}
+<a href="/category/{{drink.category}}">{{drink.strCategory}}</a> <br>
+{%endfor%}
+{%endblock%}
