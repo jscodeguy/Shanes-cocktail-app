@@ -49,17 +49,19 @@ router.get('/', (req, res) => {
 		})
 })
 
+// category route
 router.get('/category', (req, res) => {
 	let drinkArr
 	
 	// fetch(`${url}/list.php?c=list`)
 	fetch(`${url}/list.php?c=list`)
 	.then((apiResponse) => {
-		console.log(req)
+		//console.log(req)
 		return apiResponse.json();
       })
       .then((jsonData) => {
 		//console.log(jsonData)
+		
 		drinkArr = jsonData.drinks
 		console.log(drinkArr)
 		res.render('cocktail/category', {drinks: drinkArr})
@@ -74,7 +76,7 @@ router.get('/glasses', (req, res) => {
 	// fetch(`${url}/list.php?c=list`)
 	fetch(`${url}/list.php?g=list`)
 	.then((apiResponse) => {
-		console.log(req)
+		//console.log(req)
 		return apiResponse.json();
       })
       .then((jsonData) => {
@@ -88,9 +90,10 @@ router.get('/glasses', (req, res) => {
 		})
 })
 
-router.get('/category/:drink', (req, res) => {
+router.get('/category/drink/:filler', (req, res) => {
 	let drinkArr
-	let filler = 'Ordinary_Drink'
+	let filler = req.params.filler
+	// let filler
 	// fetch(`${url}/list.php?c=list`)
 	fetch(`${url}/filter.php?c=${filler}`)
       .then((apiResponse) => {
@@ -100,7 +103,7 @@ router.get('/category/:drink', (req, res) => {
 		//console.log(jsonData)
 		drinkArr = jsonData.drinks
 		console.log(drinkArr)
-		res.render('./cocktail/show', {drinks: drinkArr})
+		res.render('cocktail/show', {drinks: drinkArr, filler})
 	})
 		.catch(error => {
 			res.redirect(`/error?error=${error}`)

@@ -1,10 +1,16 @@
 {%layout 'layout.liquid'%}
 {%block content%}
 
-<h2>category form</h2>
-{%for drink in drinks%}
-<a href="/category/{{drink.strCategory}}/show">{{drink.strCategory}}</a> <br>
+<h2>categories</h2>
+
+<a href="category/drink/Cocktail">Cocktail</a> <br>
+<a href="category/drink/Shake">Shake</a> <br>
+<a href="category/drink/Ordinary%20Drink">Ordinary Drink</a> <br>
+<a href="category/drink/Cocoa">Cocoa</a> <br>
+<a href="category/drink/Homemade Liqueur">Homemade Liqueur</a> <br>
+<a href="category/drink/Soft%20Drink">Soft Drink</a> <br>
+<a href="category/drink/Shot">Shot</a> <br>
 <!-- <a href="/category/{{drink.category}}">{{drink.strDrink}}</a> <br> -->
 
-{%endfor%}
+
 {%endblock%}
