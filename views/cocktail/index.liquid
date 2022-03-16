@@ -16,10 +16,7 @@
                 <p class="card-text">
                     Category: {{ drink.strCategory }}
                 </p> -->
-                <a href="/drink/{{}}"> <img src="{{drink.strDrinkThumb}}"></a>
-                <a href="/drink/{{ drink.id }}" class="btn btn-info">
-                    View {{ drink.title }}
-                </a>
+                <a href="/drink/view/{{drink.idDrink}}"> <img src="{{drink.strDrinkThumb}}" width="100px" height="100px"></a><p>Click on the image to see the details</p>
             </div>
         </div>
         {% endfor %}

@@ -26,13 +26,11 @@ router.use((req, res, next) => {
 // index ALL
 router.get('/', (req, res) => {
 	let drinkArr
-	//console.log(req.body)
 	fetch(`${url}/random.php`)
       .then((apiResponse) => {
         return apiResponse.json();
       })
       .then((jsonData) => {
-		//console.log(jsonData)
 		drinkArr = jsonData.drinks
 		console.log(drinkArr)
 		res.render('cocktail/index', {drinks: drinkArr})
@@ -54,12 +52,9 @@ router.get('/alcoholic', (req, res) => {
 	let drinkArr
 	fetch(`${url}/list.php?a=list`)
 	.then((apiResponse) => {
-		//console.log(req)
 		return apiResponse.json();
       })
       .then((jsonData) => {
-		//console.log(jsonData)
-		
 		drinkArr = jsonData.drinks
 		console.log(drinkArr)
 		res.render('cocktail/alcoholic', {drinks: drinkArr})
@@ -74,12 +69,9 @@ router.get('/category', (req, res) => {
 	let drinkArr
 	fetch(`${url}/list.php?c=list`)
 	.then((apiResponse) => {
-		//console.log(req)
 		return apiResponse.json();
       })
       .then((jsonData) => {
-		//console.log(jsonData)
-		
 		drinkArr = jsonData.drinks
 		console.log(drinkArr)
 		res.render('cocktail/category', {drinks: drinkArr})
@@ -98,7 +90,6 @@ router.get('/glasses', (req, res) => {
 		return apiResponse.json();
       })
       .then((jsonData) => {
-		//console.log(jsonData)
 		drinkArr = jsonData.drinks
 		console.log(drinkArr)
 		res.render('cocktail/glasses', {drinks: drinkArr})
@@ -119,7 +110,6 @@ router.get('/alcoholic/drink/:filler', (req, res) => {
         return apiResponse.json();
       })
       .then((jsonData) => {
-		//console.log(jsonData)
 		drinkArr = jsonData.drinks
 		console.log(drinkArr)
 		res.render('cocktail/show', {drinks: drinkArr, filler})
@@ -134,14 +124,11 @@ router.get('/alcoholic/drink/:filler', (req, res) => {
 router.get('/glasses/drink/:filler', (req, res) => {
 	let drinkArr
 	let filler = req.params.filler
-	// let filler
-	// fetch(`${url}/list.php?c=list`)
 	fetch(`${url}/filter.php?g=${filler}`)
       .then((apiResponse) => {
         return apiResponse.json();
       })
       .then((jsonData) => {
-		//console.log(jsonData)
 		drinkArr = jsonData.drinks
 		console.log(drinkArr)
 		res.render('cocktail/show', {drinks: drinkArr, filler})
@@ -157,14 +144,11 @@ router.get('/glasses/drink/:filler', (req, res) => {
 router.get('/category/drink/:filler', (req, res) => {
 	let drinkArr
 	let filler = req.params.filler
-	// let filler
-	// fetch(`${url}/list.php?c=list`)
 	fetch(`${url}/filter.php?c=${filler}`)
       .then((apiResponse) => {
         return apiResponse.json();
       })
       .then((jsonData) => {
-		//console.log(jsonData)
 		drinkArr = jsonData.drinks
 		console.log(drinkArr)
 		res.render('cocktail/show', {drinks: drinkArr, filler})
@@ -224,7 +208,6 @@ router.get('/:id/edit', (req, res) => {
 // update route
 router.put('/:id', (req, res) => {
 	const drinkId = req.params.id
-	req.body.ready = req.body.ready === 'on' ? true : false
 
 	Drink.findByIdAndUpdate(drinkId, req.body, { new: true })
 		.then(drink => {
@@ -235,17 +218,34 @@ router.put('/:id', (req, res) => {
 		})
 })
 
-// show route
-router.get('/:id', (req, res) => {
-	const drinkId = req.params.id
-	Drink.findById(drinkId)
-		.then(drink => {
-            const {username, loggedIn, userId} = req.session
-			res.render('cocktail/show', { drink, username, loggedIn, userId })
-		})
-		.catch((error) => {
+// individual drink show route
+router.get('/view/:filler', (req, res) => {
+	
+	let drinkArr
+	let filler = req.params.filler
+	console.log('this is the idDrink', filler)
+	fetch(`${url}/lookup.php?i=${filler}`)
+      .then((apiResponse) => {
+        return apiResponse.json();
+      })
+      .then((jsonData) => {
+		drinkArr = jsonData.drinks
+		console.log(drinkArr)
+		res.render('cocktail/view', {drinks: drinkArr, filler})
+	})
+		.catch(error => {
 			res.redirect(`/error?error=${error}`)
 		})
+
+	// const drinkId = req.params.id
+	// Drink.findById(drinkId)
+	// 	.then(drink => {
+    //         const {username, loggedIn, userId} = req.session
+	// 		res.render('cocktail/view', { drink, username, loggedIn, userId })
+	// 	})
+	// 	.catch((error) => {
+	// 		res.redirect(`/error?error=${error}`)
+	// 	})
 })
 
 // delete route
