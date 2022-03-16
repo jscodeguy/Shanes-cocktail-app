@@ -86,7 +86,6 @@ router.get('/glasses', (req, res) => {
 	let drinkArr
 	fetch(`${url}/list.php?g=list`)
 	.then((apiResponse) => {
-		//console.log(req)
 		return apiResponse.json();
       })
       .then((jsonData) => {
@@ -103,8 +102,6 @@ router.get('/glasses', (req, res) => {
 router.get('/alcoholic/drink/:filler', (req, res) => {
 	let drinkArr
 	let filler = req.params.filler
-	// let filler
-	// fetch(`${url}/list.php?c=list`)
 	fetch(`${url}/filter.php?a=${filler}`)
       .then((apiResponse) => {
         return apiResponse.json();
