@@ -32,7 +32,7 @@ router.get('/', (req, res) => {
       })
       .then((jsonData) => {
 		drinkArr = jsonData.drinks
-		console.log(drinkArr)
+		//console.log(drinkArr)
 		const { username, loggedIn, userId } = req.session
 		res.render('cocktail/index', {drinks: drinkArr, username, loggedIn, userId})
 	})
@@ -162,19 +162,39 @@ router.get('/category/drink/:filler', (req, res) => {
 		})
 })
 
-// index that shows only the user's drink
+// // index that shows only the user's drink
+// router.get('/mine', (req, res) => {
+//     // destructure user info from req.session
+//     const { username, userId, loggedIn } = req.session
+// 	Drink.find({ owner: userId })
+// 		.then(drink => {
+// 			const { username, loggedIn, userId } = req.session
+// 			res.render('index', { drink, username, loggedIn })
+// 		})
+// 		.catch(error => {
+// 			res.redirect(`/error?error=${error}`)
+// 		})
+// })
+
+
+//----------------show created drink-----------------
+//router.get('/mine/:id', (req, res) => {
 router.get('/mine', (req, res) => {
     // destructure user info from req.session
     const { username, userId, loggedIn } = req.session
-	Drink.find({ owner: userId })
-		.then(drink => {
-			const { username, loggedIn, userId } = req.session
-			res.render('cocktail/index', { drink, username, loggedIn })
+	const drinkId = req.params.id
+	Drink.find({owner: req.session.userId})
+		.then(drinks => {
+			console.log('the drink we made\n', drinks)
+            const {username, loggedIn, userId} = req.session
+			res.render('index', { drinks: drinks, username, loggedIn, userId })
 		})
-		.catch(error => {
+		.catch((error) => {
 			res.redirect(`/error?error=${error}`)
 		})
 })
+
+
 
 // new route -> GET route that renders our page with the form
 router.get('/new', (req, res) => {
@@ -184,13 +204,13 @@ router.get('/new', (req, res) => {
 
 // create -> POST route that actually calls the db and makes a new document
 router.post('/', (req, res) => {
-	req.body.ready = req.body.ready === 'on' ? true : false
+	req.body.strAlcoholic = req.body.strAlcoholic === 'on' ? true : false
 
 	req.body.owner = req.session.userId
 	Drink.create(req.body)
 		.then(drink => {
 			console.log('this was returned from create', drink)
-			res.redirect('/drink')
+			res.redirect('/drink/mine')
 		})
 		.catch(error => {
 			res.redirect(`/error?error=${error}`)
