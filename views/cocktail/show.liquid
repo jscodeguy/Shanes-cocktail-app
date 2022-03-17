@@ -4,7 +4,7 @@
     <article>
         {%for drink in drinks%}
         
-        <a><img src="{{ drink.strDrinkThumb}}" width="100px" height="100px"></a> 
+        <a href="/drink/view/{{drink.idDrink}}"><img src="{{ drink.strDrinkThumb}}" width="100px" height="100px"></a> 
         
         {%endfor%}
             <!-- {% if example.ready %}

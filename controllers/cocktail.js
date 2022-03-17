@@ -33,7 +33,8 @@ router.get('/', (req, res) => {
       .then((jsonData) => {
 		drinkArr = jsonData.drinks
 		console.log(drinkArr)
-		res.render('cocktail/index', {drinks: drinkArr})
+		const { username, loggedIn, userId } = req.session
+		res.render('cocktail/index', {drinks: drinkArr, username, loggedIn, userId})
 	})
 		
 	// Drink.find({})
@@ -57,7 +58,8 @@ router.get('/alcoholic', (req, res) => {
       .then((jsonData) => {
 		drinkArr = jsonData.drinks
 		console.log(drinkArr)
-		res.render('cocktail/alcoholic', {drinks: drinkArr})
+		const { username, loggedIn, userId } = req.session
+		res.render('cocktail/alcoholic', {drinks: drinkArr, username, loggedIn, userId})
 	})
 		.catch(error => {
 			res.redirect(`/error?error=${error}`)
@@ -74,7 +76,8 @@ router.get('/category', (req, res) => {
       .then((jsonData) => {
 		drinkArr = jsonData.drinks
 		console.log(drinkArr)
-		res.render('cocktail/category', {drinks: drinkArr})
+		const { username, loggedIn, userId } = req.session
+		res.render('cocktail/category', {drinks: drinkArr, username, loggedIn, userId})
 	})
 		.catch(error => {
 			res.redirect(`/error?error=${error}`)
@@ -91,7 +94,8 @@ router.get('/glasses', (req, res) => {
       .then((jsonData) => {
 		drinkArr = jsonData.drinks
 		console.log(drinkArr)
-		res.render('cocktail/glasses', {drinks: drinkArr})
+		const { username, loggedIn, userId } = req.session
+		res.render('cocktail/glasses', {drinks: drinkArr, username, loggedIn, userId})
 	})
 		.catch(error => {
 			res.redirect(`/error?error=${error}`)
@@ -109,7 +113,8 @@ router.get('/alcoholic/drink/:filler', (req, res) => {
       .then((jsonData) => {
 		drinkArr = jsonData.drinks
 		console.log(drinkArr)
-		res.render('cocktail/show', {drinks: drinkArr, filler})
+		const { username, loggedIn, userId } = req.session
+		res.render('cocktail/show', {drinks: drinkArr, filler, username, loggedIn, userId})
 	})
 		.catch(error => {
 			res.redirect(`/error?error=${error}`)
@@ -128,7 +133,8 @@ router.get('/glasses/drink/:filler', (req, res) => {
       .then((jsonData) => {
 		drinkArr = jsonData.drinks
 		console.log(drinkArr)
-		res.render('cocktail/show', {drinks: drinkArr, filler})
+		const { username, loggedIn, userId } = req.session
+		res.render('cocktail/show', {drinks: drinkArr, filler, username, loggedIn, userId})
 	})
 		.catch(error => {
 			res.redirect(`/error?error=${error}`)
@@ -148,7 +154,8 @@ router.get('/category/drink/:filler', (req, res) => {
       .then((jsonData) => {
 		drinkArr = jsonData.drinks
 		console.log(drinkArr)
-		res.render('cocktail/show', {drinks: drinkArr, filler})
+		const { username, loggedIn, userId } = req.session
+		res.render('cocktail/show', {drinks: drinkArr, filler, username, loggedIn, userId})
 	})
 		.catch(error => {
 			res.redirect(`/error?error=${error}`)
@@ -161,6 +168,7 @@ router.get('/mine', (req, res) => {
     const { username, userId, loggedIn } = req.session
 	Drink.find({ owner: userId })
 		.then(drink => {
+			const { username, loggedIn, userId } = req.session
 			res.render('cocktail/index', { drink, username, loggedIn })
 		})
 		.catch(error => {
@@ -195,7 +203,8 @@ router.get('/:id/edit', (req, res) => {
 	const drinkId = req.params.id
 	Drink.findById(drinkId)
 		.then(drink => {
-			res.render('cocktail/edit', { drink })
+			const { username, loggedIn, userId } = req.session
+			res.render('cocktail/edit', { drink, username, loggedIn, userId })
 		})
 		.catch((error) => {
 			res.redirect(`/error?error=${error}`)
@@ -228,7 +237,8 @@ router.get('/view/:filler', (req, res) => {
       .then((jsonData) => {
 		drinkArr = jsonData.drinks
 		console.log(drinkArr)
-		res.render('cocktail/view', {drinks: drinkArr, filler})
+		const { username, loggedIn, userId } = req.session
+		res.render('cocktail/view', {drinks: drinkArr, filler, username, loggedIn, userId})
 	})
 		.catch(error => {
 			res.redirect(`/error?error=${error}`)
