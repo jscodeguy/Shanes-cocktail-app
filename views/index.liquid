@@ -5,8 +5,8 @@
 <div class="container-md">
 <h1>Drink name: {{drink.strDrink}}</h1>
 <h2>Drink category: {{drink.strCategory}}</h2>
-<h3>Aloholic or not: {{drink.strAlcoholic}}</h3>
-<img src="{{drink.strDrinkThumb}}" width="250px" height="250px">
+<h3>Alcoholic or not: {{drink.strAlcoholic}}</h3>
+<img src="https://i.imgur.com/PvKDdgF.jpeg" width="250px" height="250px">
 
 <h2>Drink ingredients: </h2>
 <ul>
@@ -31,6 +31,10 @@
 <h5>{{drink.strInstructions}}</h5>
 
 <h4>Required glass: {{drink.strGlass}}</h4>
+<a href="/drink/{{ drink._id }}/edit" class="btn btn-primary">Edit your drink</a>
+<form action="/drink/{{ drink._id }}?_method=DELETE" method="POST">
+    <input type="submit" value="delete your drink?" class="btn btn-danger">
+</form>
 {%endfor%}
 </div>
     {% endblock %}

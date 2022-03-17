@@ -220,7 +220,7 @@ router.post('/', (req, res) => {
 // edit route -> GET that takes us to the edit form view
 router.get('/:id/edit', (req, res) => {
 	// we need to get the id
-	const drinkId = req.params.id
+	const drinkId = req.params._id
 	Drink.findById(drinkId)
 		.then(drink => {
 			const { username, loggedIn, userId } = req.session
@@ -276,7 +276,7 @@ router.get('/view/:filler', (req, res) => {
 })
 
 // delete route
-router.delete('/:id', (req, res) => {
+router.delete('/mine', (req, res) => {
 	const drinkId = req.params.id
 	Drink.findByIdAndRemove(drinkId)
 		.then(drink => {
