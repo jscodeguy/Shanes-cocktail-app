@@ -1,14 +1,14 @@
 {% layout 'layout.liquid' %}
 {% block content %}
 <div class="container-sm">
-    <form action="/drink" method="POST">
+    <form action="/drink/{{drink.id}}/edit?_method=PUT" method="POST">
         <fieldset>
             <legend>Create Your Own Drink!</legend>
             <label class="form-label">Drink name: </label>
             <input 
                 type="text" 
                 name="strDrink" 
-                value="{{strDrink}}" 
+                value="{{drink.strDrink}}" 
                 placeholder="Enter Drink name"
                 class="form-control"
             >
@@ -16,7 +16,7 @@
             <input 
                 type="text" 
                 name="strCategory" 
-                value="{{strCategory}}" 
+                value="{{drink.strCategory}}" 
                 placeholder="Enter Drink category" 
                 class="form-control"
             >
@@ -24,7 +24,7 @@
             <input 
                 type="text" 
                 name="strIngredient1" 
-                value="{{strIngredient1}}"
+                value="{{drink.strIngredient1}}"
                 class="form-control"
                 placeholder="Only one ingredient per line"
             >
@@ -32,7 +32,7 @@
             <input 
                 type="text" 
                 name="strMeasure1" 
-                value="{{strMeasure1}}" 
+                value="{{drink.strMeasure1}}" 
                 class="form-control"
                 placeholder="Make sure to include a unit!"
             >
@@ -40,7 +40,7 @@
             <input 
                 type="text" 
                 name="strIngredient2" 
-                value="{{strIngredient2}}"
+                value="{{drink.strIngredient2}}"
                 class="form-control"
                 placeholder="Only one ingredient per line"
             >
@@ -48,15 +48,15 @@
             <input 
                 type="text" 
                 name="strMeasure2" 
-                value="{{strMeasure2}}"
- }}               class="form-control"
+                value="{{drink.strMeasure2}}"
+                class="form-control"
                 placeholder="Make sure to include a unit!"
             >
             <label class="form-label">Drink ingredient:</label>
             <input 
                 type="text" 
                 name="strIngredient3" 
-                value="{{strIngredient3}}" 
+                value="{{drink.strIngredient3}}" 
                 class="form-control"
                 placeholder="Only one ingredient per line"
             >
@@ -64,7 +64,7 @@
             <input 
                 type="text" 
                 name="strMeasure3" 
-                value="{{strMeasure3}}"
+                value="{{drink.strMeasure3}}"
                 class="form-control"
                 placeholder="Make sure to include a unit!"
             >
@@ -72,7 +72,7 @@
             <input 
                 type="text" 
                 name="strIngredient4" 
-                value="{{strIngredient4}}"
+                value="{{drink.strIngredient4}}"
                 class="form-control"
                 placeholder="Only one ingredient per line"
             >
@@ -80,7 +80,7 @@
             <input 
                 type="text" 
                 name="strMeasure4" 
-                value="{{strMeasure4}}"
+                value="{{drink.strMeasure4}}"
                 class="form-control"
                 placeholder="Make sure to include a unit!"
             >
@@ -88,7 +88,7 @@
             <input 
                 type="text" 
                 name="strIngredient5" 
-                value="{{strIngredient5}}"
+                value="{{drink.strIngredient5}}"
                 class="form-control"
                 placeholder="Only one ingredient per line"
             >
@@ -96,7 +96,7 @@
             <input 
                 type="text" 
                 name="strMeasure5" 
-                value="{{strMeasure5}}"
+                value="{{drink.strMeasure5}}"
                 class="form-control"
                 placeholder="Make sure to include a unit!"
             >
@@ -104,7 +104,7 @@
             <input 
                 type="text" 
                 name="strIngredient6" 
-                value="{{strIngredient6}}" 
+                value="{{drink.strIngredient6}}" 
                 class="form-control"
                 placeholder="Only one ingredient per line"
             >
@@ -112,7 +112,7 @@
             <input 
                 type="text" 
                 name="strMeasure6" 
-                value="{{strMeasure6}}"
+                value="{{drink.strMeasure6}}"
                 class="form-control"
                 placeholder="Make sure to include a unit!"
             >
@@ -120,7 +120,7 @@
             <input 
                 type="text" 
                 name="strIngredient7" 
-                value="{{strIngredient7}}" 
+                value="{{drink.strIngredient7}}" 
                 class="form-control"
                 placeholder="Only one ingredient per line"
             >
@@ -128,7 +128,7 @@
             <input 
                 type="text" 
                 name="strMeasure7" 
-                value="{{strMeasure7}}" 
+                value="{{drink.strMeasure7}}" 
                 class="form-control"
                 placeholder="Make sure to include a unit!"
             >
@@ -136,7 +136,7 @@
             <input 
                 type="text" 
                 name="strIngredient8" 
-                value="{{strIngredient8}}" 
+                value="{{drink.strIngredient8}}" 
                 class="form-control"
                 placeholder="Only one ingredient per line"
             >
@@ -144,7 +144,7 @@
             <input 
                 type="text" 
                 name="strMeasure8" 
-                value="{{strMeasure8}}" 
+                value="{{drink.strMeasure8}}" 
                 class="form-control"
                 placeholder="Make sure to include a unit!"
             >
@@ -152,7 +152,7 @@
             <input 
                 type="text" 
                 name="strIngredient9" 
-                value="{{strIngredient9}}"
+                value="{{drink.strIngredient9}}"
                 class="form-control"
                 placeholder="Only one ingredient per line"
             >
@@ -160,7 +160,7 @@
             <input 
                 type="text" 
                 name="strMeasure9" 
-                value="{{strMeasure9}}" 
+                value="{{drink.strMeasure9}}" 
                 class="form-control"
                 placeholder="Make sure to include a unit!"
             >
@@ -168,7 +168,7 @@
             <input 
                 type="text" 
                 name="strIngredient10" 
-                value="{{strIngredient10}}"
+                value="{{drink.strIngredient10}}"
                 class="form-control"
                 placeholder="Only one ingredient per line"
             >
@@ -176,7 +176,7 @@
             <input 
                 type="text" 
                 name="strMeasure10" 
-                value="{{strMeasure10}}" 
+                value="{{drink.strMeasure10}}" 
                 class="form-control"
                 placeholder="Make sure to include a unit!"
             >
@@ -184,7 +184,7 @@
             <input 
                 type="text" 
                 name="strIngredient11"
-                value="{{strIngredient11}}"  
+                value="{{drink.strIngredient11}}"  
                 class="form-control"
                 placeholder="Only one ingredient per line"
             >
@@ -192,7 +192,7 @@
             <input 
                 type="text" 
                 name="strMeasure11" 
-                value="{{strMeasure11}}" 
+                value="{{drink.strMeasure11}}" 
                 class="form-control"
                 placeholder="Make sure to include a unit!"
             >
@@ -200,7 +200,7 @@
             <input 
                 type="text" 
                 name="strIngredient12" 
-                value="{{strIngredient12}}" 
+                value="{{drink.strIngredient12}}" 
                 class="form-control"
                 placeholder="Only one ingredient per line"
             >
@@ -208,7 +208,7 @@
             <input 
                 type="text" 
                 name="strMeasure12" 
-                value="{{strMeasure12}}" 
+                value="{{drink.strMeasure12}}" 
                 class="form-control"
                 placeholder="Make sure to include a unit!"
             >
@@ -216,7 +216,7 @@
             <input 
                 type="text" 
                 name="strIngredient13" 
-                value="{{strIngredient13}}" 
+                value="{{drink.strIngredient13}}" 
                 class="form-control"
                 placeholder="Only one ingredient per line"
             >
@@ -224,7 +224,7 @@
             <input 
                 type="text" 
                 name="strMeasure13"
-                value="{{strMeasure13}}"  
+                value="{{drink.strMeasure13}}"  
                 class="form-control"
                 placeholder="Make sure to include a unit!"
             >
@@ -232,7 +232,7 @@
             <input 
                 type="text" 
                 name="strIngredient14" 
-                value="{{strIngredient14}}" 
+                value="{{drink.strIngredient14}}" 
                 class="form-control"
                 placeholder="Only one ingredient per line"
             >
@@ -240,7 +240,7 @@
             <input 
                 type="text" 
                 name="strMeasure14" 
-                value="{{strMeasure14}}"
+                value="{{drink.strMeasure14}}"
                 class="form-control"
                 placeholder="Make sure to include a unit!"
             >
@@ -248,7 +248,7 @@
             <input 
                 type="text" 
                 name="strIngredient15" 
-                value="{{strIngredient15}}"
+                value="{{drink.strIngredient15}}"
                 class="form-control"
                 placeholder="Only one ingredient per line"
             >
@@ -256,7 +256,7 @@
             <input 
                 type="text" 
                 name="strMeasure15" 
-                value="{{strMeasure15}}" 
+                value="{{drink.strMeasure15}}" 
                 class="form-control"
                 placeholder="Make sure to include a unit!"
             > 
@@ -264,7 +264,7 @@
             <input 
                 type="text" 
                 name="strInstructions" 
-                value="{{strInstructions}}" 
+                value="{{drink.strInstructions}}" 
                 class="form-control"
                 placeholder="Make sure to list all steps!"
             >
@@ -272,7 +272,7 @@
             <input 
                 type="text" 
                 name="strGlass" 
-                value="{{strGlass}}" 
+                value="{{drink.strGlass}}" 
                 class="form-control"
                 placeholder="Ex: shot, margarita, jar etc."
             >
@@ -281,7 +281,7 @@
             <input 
                 type="checkbox" 
                 name="strAlcoholic" 
-                value="{{strAlcoholic}}"
+                value="{{drink.strAlcoholic}}"
                 class="form-check-input"
             > <br>
         </fieldset>

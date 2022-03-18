@@ -181,11 +181,11 @@ router.get('/category/drink/:filler', (req, res) => {
 //router.get('/mine/:id', (req, res) => {
 router.get('/mine', (req, res) => {
     // destructure user info from req.session
-    const { username, userId, loggedIn } = req.session
+    // const { username, userId, loggedIn } = req.session
 	const drinkId = req.params.id
 	Drink.find({owner: req.session.userId})
 		.then(drinks => {
-			console.log('the drink we made\n', drinks)
+			//console.log('the drink we made\n', drinks)
             const {username, loggedIn, userId} = req.session
 			res.render('index', { drinks: drinks, username, loggedIn, userId })
 		})
@@ -220,9 +220,10 @@ router.post('/', (req, res) => {
 // edit route -> GET that takes us to the edit form view
 router.get('/:id/edit', (req, res) => {
 	// we need to get the id
-	const drinkId = req.params._id
+	const drinkId = req.params.id
 	Drink.findById(drinkId)
 		.then(drink => {
+			console.log('is this a drink?', drink)
 			const { username, loggedIn, userId } = req.session
 			res.render('cocktail/edit', { drink, username, loggedIn, userId })
 		})
@@ -232,12 +233,17 @@ router.get('/:id/edit', (req, res) => {
 })
 
 // update route
-router.put('/:id', (req, res) => {
+router.put('/:id/edit', (req, res) => {
 	const drinkId = req.params.id
-
+	req.body.strAlcoholic = req.body.strAlcoholic === 'on' ? true : false
+	console.log('this is the put first chain', req.body)
+	console.log('this is drink id', drinkId)
 	Drink.findByIdAndUpdate(drinkId, req.body, { new: true })
 		.then(drink => {
-			res.redirect(`/drink/${drink.id}`)
+			const { username, loggedIn, userId } = req.session
+			console.log('this drink', drink[0])
+			console.log('this is the put route', req.body)
+			res.redirect(`/drink/mine` )
 		})
 		.catch((error) => {
 			res.redirect(`/error?error=${error}`)
@@ -276,7 +282,7 @@ router.get('/view/:filler', (req, res) => {
 })
 
 // delete route
-router.delete('/mine', (req, res) => {
+router.delete('/:id', (req, res) => {
 	const drinkId = req.params.id
 	Drink.findByIdAndRemove(drinkId)
 		.then(drink => {
