@@ -35,6 +35,7 @@ router.get("/", (req, res) => {
     })
     .then((jsonData) => {
       drinkArr = jsonData.drinks;
+	  console.log(drinkArr)
       const { username, loggedIn, userId } = req.session;
       res.render("cocktail/index", {
         drinks: drinkArr,
@@ -193,21 +194,6 @@ router.get("/category/drink/:filler", (req, res) => {
         loggedIn,
         userId,
       });
-    })
-    .catch((error) => {
-      res.redirect(`/error?error=${error}`);
-    });
-});
-
-///////////////////////////////////////////////
-//    show Route for all user favorited drinks //
-///////////////////////////////////////////////
-router.get("/fave", (req, res) => {
-  const drinkId = req.params.id;
-  Drink.find({ owner: req.session.userId })
-    .then((drinks) => {
-     const { username, loggedIn, userId } = req.session;
-     res.render("cocktail/fave", { drinks: drinks, username, loggedIn, userId });
     })
     .catch((error) => {
       res.redirect(`/error?error=${error}`);

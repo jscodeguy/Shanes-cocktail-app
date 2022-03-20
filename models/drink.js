@@ -9,6 +9,7 @@ const { Schema, model } = mongoose
 
 const drinkSchema = new Schema(
 	{
+		idDrink: {type: Number},
 		strDrink: { type: String, required: true },
 		strCategory: { type: String, required: true },
 		strIngredient1: { type: String, required: true },

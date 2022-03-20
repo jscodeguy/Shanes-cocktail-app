@@ -1,0 +1,10 @@
+{%layout 'layout.liquid'%}
+{%block content%}
+<h1>Find a Drink</h1>
+
+<form action="/drink/view/:id" method="POST">
+    <input type="text" name="searchRes" placeholder="Enter Drink Name" />
+    <input type="submit" value="Search" />
+  </form>
+ 
+{%endblock%}
