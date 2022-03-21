@@ -14,17 +14,17 @@
                 <a href="/drink/new" class="nav-link text-light">Create a custom drink</a>
                 <a href="/drink/mine" class="nav-link text-light">My Created Drinks</a>
                 <!-- <a href="/drink/fave" class="nav-link text-light">My Favorite Drinks</a> -->
-                <a href="/auth/logout" class="nav-link text-light">Log Out</a>
-                <!-- <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                      Dropdown link
+                <div class="dropdown">
+                    <a class="btn btn-secondary dropdown-toggle" href="drink/drop" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                      Filter by
                     </a>
-                    <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                      <li><a class="dropdown-item" href="#">Action</a></li>
-                      <li><a class="dropdown-item" href="#">Another action</a></li>
-                      <li><a class="dropdown-item" href="#">Something else here</a></li>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                      <li><a class="dropdown-item" href="/drink/category">categories</a></li>
+                      <li><a class="dropdown-item" href="/drink/alcoholic">alcoholic</a></li>
+                      <li><a class="dropdown-item" href="/drink/glasses">glasses</a></li>
                     </ul>
-                  </li> -->
+                  </div>
+                <a href="/auth/logout" class="nav-link text-light">Log Out</a>
             {% else %}
                 <a href="/auth/signup" class="nav-link text-light">Sign Up</a>
                 <a href="/auth/login" class="nav-link text-light">Sign In</a>

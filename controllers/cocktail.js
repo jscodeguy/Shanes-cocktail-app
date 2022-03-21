@@ -35,7 +35,7 @@ router.get("/", (req, res) => {
     })
     .then((jsonData) => {
       drinkArr = jsonData.drinks;
-	  console.log(drinkArr)
+      console.log(drinkArr)
       const { username, loggedIn, userId } = req.session;
       res.render("cocktail/index", {
         drinks: drinkArr,
@@ -48,6 +48,62 @@ router.get("/", (req, res) => {
       res.redirect(`/error?error=${error}`);
     });
 });
+
+
+/////////////////////////////////
+//    the drink search Route  //
+////////////////////////////////
+router.get("/search", (req, res) => {
+    let drinkArr;
+    // const searchResult = req.body.searchRes
+    // fetch(`${url}/search.php?s=${searchRes}`)
+    //   .then((apiResponse) => {
+    //  return apiResponse.json();
+    //   })
+    //   .then((jsonData) => {
+    //  drinkArr = jsonData.drinks;
+        //console.log(drinkArr);
+        const { username, loggedIn, userId } = req.session;
+        res.render("cocktail/search", {
+          drinks: drinkArr,
+          username,
+          loggedIn,
+          userId,
+        });
+    //   })
+    //   .catch((error) => {
+    //  res.redirect(`/error?error=${error}`);
+    //   });
+  });
+
+
+/////////////////////////////////
+//    the drink search Route  //
+////////////////////////////////
+router.post("/search/:id", (req, res) => {
+    let drinkArr;
+    const searchResult = req.body.searchRes
+    fetch(`${url}/search.php?s=${searchRes}`)
+      .then((apiResponse) => {
+        return apiResponse.json();
+      })
+      .then((jsonData) => {
+        drinkArr = jsonData.drinks;
+        //console.log(drinkArr);
+        const { username, loggedIn, userId } = req.session;
+        res.redirect("cocktail/view", {
+          drinks: drinkArr,
+          jsonData,
+          username,
+          loggedIn,
+          userId,
+        });
+      })
+      .catch((error) => {
+        res.redirect(`/error?error=${error}`);
+      });
+  });
+
 
 /////////////////////////////////
 //    the alcoholic list Route  //
@@ -201,6 +257,21 @@ router.get("/category/drink/:filler", (req, res) => {
 });
 
 ///////////////////////////////////////////////
+//    show Route for all user favorited drinks //
+///////////////////////////////////////////////
+router.get("/fave", (req, res) => {
+  //const drinkId = req.params.id;
+  Drink.find({ owner: req.session.userId })
+    .then((drinks) => {
+     const { username, loggedIn, userId } = req.session;
+     res.render("cocktail/fave", { drinks: drinks, username, loggedIn, userId });
+    })
+    .catch((error) => {
+      res.redirect(`/error?error=${error}`);
+    });
+});
+
+///////////////////////////////////////////////
 //    show Route for all user created drinks //
 ///////////////////////////////////////////////
 router.get("/mine", (req, res) => {
@@ -311,3 +382,4 @@ router.delete("/:id", (req, res) => {
 
 // Export the Router
 module.exports = router;
+
