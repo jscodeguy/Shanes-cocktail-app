@@ -279,7 +279,7 @@ router.get("/mine", (req, res) => {
   Drink.find({ owner: req.session.userId })
     .then((drinks) => {
       const { username, loggedIn, userId } = req.session;
-      res.render("index", { drinks: drinks, username, loggedIn, userId });
+      res.render("userCreatedDrinks", { drinks: drinks, username, loggedIn, userId });
     })
     .catch((error) => {
       res.redirect(`/error?error=${error}`);

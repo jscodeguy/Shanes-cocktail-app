@@ -1,13 +1,18 @@
 {% layout 'layout.liquid' %}
 {% block content %}
 <div class="container-md">
-    <article>
+    <div class="row">
         {%for drink in drinks%}
-        
-        <a href="/drink/view/{{drink.idDrink}}"><img src="{{ drink.strDrinkThumb}}" width="100px" height="100px"></a> 
-        
+        <div class="col-md-3">
+        <div class="card" style="width: 18rem;">
+            <img src="{{ drink.strDrinkThumb}}" width="75px" height="150px" class="card-img-top">
+            <div class="card-body">
+              <h5 class="card-title">{{drink.strDrink}}</h5>
+              <a href="/drink/view/{{drink.idDrink}}" class="btn btn-primary">See drink</a>
+            </div>
+          </div>
+        </div>
         {%endfor%}
-        
-    </article>
+</div>
 </div>
 {% endblock %}

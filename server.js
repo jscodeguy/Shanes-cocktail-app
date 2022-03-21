@@ -26,7 +26,7 @@ app.use('/drink', cockyRouter)
 
 app.get('/', (req, res) => {
     const { username, userId, loggedIn } = req.session
-	res.render('index.liquid', { loggedIn, username, userId })
+	res.render('homepage.liquid', { loggedIn, username, userId })
 })
 
 app.get('/error', (req, res) => {
