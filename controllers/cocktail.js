@@ -37,7 +37,7 @@ router.get("/", (req, res) => {
       drinkArr = jsonData.drinks;
       console.log(drinkArr)
       const { username, loggedIn, userId } = req.session;
-      res.render("cocktail/index", {
+      res.render("cocktail/homepage", {
         drinks: drinkArr,
         username,
         loggedIn,
@@ -91,7 +91,7 @@ router.post("/search/:id", (req, res) => {
         drinkArr = jsonData.drinks;
         //console.log(drinkArr);
         const { username, loggedIn, userId } = req.session;
-        res.redirect("cocktail/view", {
+        res.redirect("cocktail/apiDrinkView", {
           drinks: drinkArr,
           jsonData,
           username,
@@ -191,7 +191,7 @@ router.get("/alcoholic/drink/:filler", (req, res) => {
     .then((jsonData) => {
       drinkArr = jsonData.drinks;
       const { username, loggedIn, userId } = req.session;
-      res.render("cocktail/show", {
+      res.render("cocktail/filteredShow", {
         drinks: drinkArr,
         filler,
         username,
@@ -217,7 +217,7 @@ router.get("/glasses/drink/:filler", (req, res) => {
     .then((jsonData) => {
       drinkArr = jsonData.drinks;
       const { username, loggedIn, userId } = req.session;
-      res.render("cocktail/show", {
+      res.render("cocktail/filteredShow", {
         drinks: drinkArr,
         filler,
         username,
@@ -243,7 +243,7 @@ router.get("/category/drink/:filler", (req, res) => {
     .then((jsonData) => {
       drinkArr = jsonData.drinks;
       const { username, loggedIn, userId } = req.session;
-      res.render("cocktail/show", {
+      res.render("cocktail/filteredShow", {
         drinks: drinkArr,
         filler,
         username,
@@ -353,7 +353,7 @@ router.get("/view/:filler", (req, res) => {
     .then((jsonData) => {
       drinkArr = jsonData.drinks;
       const { username, loggedIn, userId } = req.session;
-      res.render("cocktail/view", {
+      res.render("cocktail/apiDrinkView", {
         drinks: drinkArr,
         filler,
         username,
