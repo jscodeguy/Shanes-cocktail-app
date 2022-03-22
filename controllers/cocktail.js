@@ -37,7 +37,7 @@ router.get("/", (req, res) => {
       drinkArr = jsonData.drinks;
       console.log(drinkArr)
       const { username, loggedIn, userId } = req.session;
-      res.render("cocktail/homepage", {
+      res.render("homepage", {
         drinks: drinkArr,
         username,
         loggedIn,
