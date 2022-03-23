@@ -55,14 +55,14 @@ router.get("/", (req, res) => {
 ////////////////////////////////
 router.get("/search", (req, res) => {
     let drinkArr;
-    // const searchResult = req.body.searchRes
-    // fetch(`${url}/search.php?s=${searchRes}`)
-    //   .then((apiResponse) => {
-    //  return apiResponse.json();
-    //   })
-    //   .then((jsonData) => {
-    //  drinkArr = jsonData.drinks;
-        //console.log(drinkArr);
+    const searchResult = req.body.searchRes
+    fetch(`${url}/search.php?s=${searchResult}`)
+      .then((apiResponse) => {
+     return apiResponse.json();
+      })
+      .then((jsonData) => {
+     drinkArr = jsonData.drinks;
+        console.log(drinkArr);
         const { username, loggedIn, userId } = req.session;
         res.render("cocktail/search", {
           drinks: drinkArr,
@@ -70,20 +70,20 @@ router.get("/search", (req, res) => {
           loggedIn,
           userId,
         });
-    //   })
-    //   .catch((error) => {
-    //  res.redirect(`/error?error=${error}`);
-    //   });
+      })
+      .catch((error) => {
+     res.redirect(`/error?error=${error}`);
+      });
   });
 
 
 /////////////////////////////////
 //    the drink search Route  //
 ////////////////////////////////
-router.post("/search/:id", (req, res) => {
+router.post("/search", (req, res) => {
     let drinkArr;
     const searchResult = req.body.searchRes
-    fetch(`${url}/search.php?s=${searchRes}`)
+    fetch(`${url}/search.php?s=${searchResult}`)
       .then((apiResponse) => {
         return apiResponse.json();
       })
@@ -265,6 +265,23 @@ router.get("/fave", (req, res) => {
     .then((drinks) => {
      const { username, loggedIn, userId } = req.session;
      res.render("cocktail/fave", { drinks: drinks, username, loggedIn, userId });
+    })
+    .catch((error) => {
+      res.redirect(`/error?error=${error}`);
+    });
+});
+
+////////////////////
+//    create Route  //
+////////////////////
+router.post("/favedrink", (req, res) => {
+  req.body.strAlcoholic = req.body.strAlcoholic === "on" ? true : false;
+  req.body.owner = req.session.userId;
+  console.log('this is body', req.body)
+  Drink.create(req.body)
+    .then((drink) => {
+      console.log('inside promise log', drink)
+      res.redirect("/drink/fave");
     })
     .catch((error) => {
       res.redirect(`/error?error=${error}`);

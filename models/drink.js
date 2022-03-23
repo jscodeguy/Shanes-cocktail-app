@@ -9,6 +9,7 @@ const { Schema, model } = mongoose
 
 const drinkSchema = new Schema(
 	{
+		strDrinkThumb: {type: String},
 		idDrink: {type: Number},
 		strDrink: { type: String, required: true },
 		strCategory: { type: String, required: true },
@@ -42,7 +43,7 @@ const drinkSchema = new Schema(
 		strMeasure13: { type: String},
 		strMeasure14: { type: String},
 		strMeasure15: { type: String},
-		strAlcoholic: { type: Boolean, required: true },
+		strAlcoholic: { type: Boolean,},
 		strInstructions: {type: String, required: true},
 		strGlass: {type: String, required: true},
 		owner: {
