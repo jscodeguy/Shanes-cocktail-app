@@ -18,7 +18,12 @@
             Category: {{ drink.strCategory }}
         </p>
         <p class="card-text">
-            Alcoholic or not: {{drink.strAlcoholic}}
+            {% if drink.strAlcoholic == true %}
+                Alcoholic
+            {% endif %}
+            {% if drink.strAlcoholic == false %}
+                Non-Alcoholic
+            {% endif %}
         </p>
         <p class="card-text">
             Drink instructions: {{drink.strInstructions}}
