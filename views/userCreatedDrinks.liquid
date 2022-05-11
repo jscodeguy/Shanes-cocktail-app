@@ -2,11 +2,11 @@
 {% block content %}
 {%for drink in drinks%}
 
-<div class="card" style="width: 50rem;">
+<div class="card" style="width: 20rem;">
     <div class="btn-group" role="group" aria-label="Basic example">
-        <a href="/drink/{{ drink._id }}/edit" class="btn btn-primary">Edit your drink</a>
+        <a href="/drink/{{ drink._id }}/edit" class="btn btn-primary">Edit {{ drink.strDrink }}</a>
         <form action="/drink/{{ drink._id }}?_method=DELETE" method="POST">
-            <input type="submit" value="delete your drink?" class="btn btn-danger">
+            <input type="submit" value="Delete {{ drink.strDrink }}?" class="btn btn-danger">
         </form>
       </div>  
     <h5 class="card-header">{{ drink.strDrink}}</h5>
@@ -46,9 +46,10 @@
                     <li class="list-unstyled" >{{drink.strIngredient15}} {{drink.strMeasure15}}</li>
                 </ul>
             </p>
-            <img src="https://i.imgur.com/PvKDdgF.jpeg" width="300px" height="300px"></a>
+            <img src="https://i.imgur.com/PvKDdgF.jpeg" width="100px" height="100px"></a>
         </div>
 </div>
+<br>
 
 
 
