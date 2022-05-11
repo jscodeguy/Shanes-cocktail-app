@@ -5,8 +5,15 @@
         <div class="container-md">
             <h1>Drink name: {{drink.strDrink}}</h1>
             <h2>Drink category: {{drink.strCategory}}</h2>
-            <h3>Alcoholic or not: {{drink.strAlcoholic}}</h3>
-            <img src="{{drink.strDrinkThumb}}" width="250px" height="250px">
+            <h3>
+                {% if drink.strAlcoholic == true %}
+                    Alcoholic
+                {% endif %}
+                {% if drink.strAlcoholic == false %}
+                    Non-Alcoholic
+                {% endif %}
+            </h3>
+            <img alt= "One of your favorite drinks!" src="{{drink.strDrinkThumb}}" width="250px" height="250px">
 
             <h2>Drink ingredients: </h2>
             <ul>
