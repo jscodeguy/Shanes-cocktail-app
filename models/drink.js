@@ -9,6 +9,7 @@ const { Schema, model } = mongoose
 
 const drinkSchema = new Schema(
 	{	
+		created: {type: Boolean, default: false},
 		strDrinkThumb: {type: String},
 		idDrink: {type: Number, default: 0},
 		strDrink: { type: String, required: true },

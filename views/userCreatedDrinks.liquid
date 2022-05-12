@@ -1,7 +1,7 @@
 {% layout "layout.liquid" %}
     {% block content %}
         {%for drink in drinks%}
-        {% if drink.idDrink == 0 %}
+        {% if drink.created == true %}
         <br>
             <div class="card" style="width: 30rem;">
                 <h5 class="card-header">{{ drink.strDrink}}</h5>
