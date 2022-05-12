@@ -8,7 +8,7 @@ const User = require('./user')
 const { Schema, model } = mongoose
 
 const drinkSchema = new Schema(
-	{
+	{	
 		strDrinkThumb: {type: String},
 		idDrink: {type: Number},
 		strDrink: { type: String, required: true },

@@ -277,10 +277,12 @@ router.get("/fave", (req, res) => {
 router.post("/favedrink", (req, res) => {
   req.body.strAlcoholic = req.body.strAlcoholic === "on" ? true : false;
   req.body.owner = req.session.userId;
+  req.body.idDrink = req.body.idDrinkDrink
   console.log('this is body', req.body)
   Drink.create(req.body)
     .then((drink) => {
       console.log('inside promise log', drink)
+      console.log('the drink id', drink.idDrink)
       res.redirect("/drink/fave");
     })
     .catch((error) => {
