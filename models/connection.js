@@ -6,8 +6,8 @@ const mongoose = require('mongoose')
 // connect to the database
 //local database connection--> process.env.DATABASE_URL
 //remote database connection --> process.env.MONGODB_URI
-// mongoose.connect(process.env.MONGODB_URI, {
-mongoose.connect(process.env.DATABASE_URL, {
+mongoose.connect(process.env.MONGODB_URI, {
+// mongoose.connect(process.env.DATABASE_URL, {
 	useUnifiedTopology: true,
 	useNewUrlParser: true,
 })
