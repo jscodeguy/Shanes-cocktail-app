@@ -271,18 +271,15 @@ router.get("/fave", (req, res) => {
     });
 });
 
-////////////////////
-//    create Route  //
-////////////////////
+////////////////////////////////
+//    add to favorites Route  //
+////////////////////////////////
 router.post("/favedrink", (req, res) => {
-  req.body.strAlcoholic = req.body.strAlcoholic === "on" ? true : false;
   req.body.owner = req.session.userId;
   req.body.idDrink = req.body.idDrinkDrink
   console.log('this is body', req.body)
   Drink.create(req.body)
     .then((drink) => {
-      console.log('inside promise log', drink)
-      console.log('the drink id', drink.idDrink)
       res.redirect("/drink/fave");
     })
     .catch((error) => {
@@ -317,7 +314,6 @@ router.get("/new", (req, res) => {
 //    create Route  //
 ////////////////////
 router.post("/", (req, res) => {
-  req.body.strAlcoholic = req.body.strAlcoholic === "on" ? true : false;
   req.body.owner = req.session.userId;
   req.body.created = true
   Drink.create(req.body)
@@ -372,6 +368,7 @@ router.get("/view/:filler", (req, res) => {
     })
     .then((jsonData) => {
       drinkArr = jsonData.drinks;
+      console.log(drinkArr)
       const { username, loggedIn, userId } = req.session;
       res.render("cocktail/apiDrinkView", {
         drinks: drinkArr,

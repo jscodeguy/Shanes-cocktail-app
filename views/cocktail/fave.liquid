@@ -13,12 +13,7 @@
                 <h5>Drink category: </h5>
                     <p>{{drink.strCategory}}</p>
                 <h5>
-                    {% if drink.strAlcoholic == true %}
-                        Alcoholic
-                    {% endif %}
-                    {% if drink.strAlcoholic == false %}
-                        Non-Alcoholic
-                    {% endif %}
+                    {{ drink.strAlcoholic }}
                 </h5>
                 <img alt= "One of your favorite drinks!" src="{{drink.strDrinkThumb}}" width="250px" height="250px">
 
