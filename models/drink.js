@@ -10,7 +10,7 @@ const { Schema, model } = mongoose
 const drinkSchema = new Schema(
 	{	
 		strDrinkThumb: {type: String},
-		idDrink: {type: Number},
+		idDrink: {type: Number, default: 0},
 		strDrink: { type: String, required: true },
 		strCategory: { type: String, required: true },
 		strIngredient1: { type: String, required: true },

@@ -319,6 +319,7 @@ router.get("/new", (req, res) => {
 router.post("/", (req, res) => {
   req.body.strAlcoholic = req.body.strAlcoholic === "on" ? true : false;
   req.body.owner = req.session.userId;
+  req.body.idDrink = req.body.idDrinkDrink
   Drink.create(req.body)
     .then((drink) => {
       res.redirect("/drink/mine");
