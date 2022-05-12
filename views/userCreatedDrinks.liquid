@@ -1,62 +1,62 @@
 {% layout "layout.liquid" %}
     {% block content %}
         {%for drink in drinks%}
-        {% if drink.created == true %}
-        <br>
-            <div class="card" style="width: 30rem;">
-                <h5 class="card-header">{{ drink.strDrink}}</h5>
-                <div class="btn-group" role="group" aria-label="Basic example">
-                    <a href="/drink/{{ drink._id }}/edit" class="btn btn-primary">Edit {{ drink.strDrink }}</a>
-                    <form action="/drink/{{ drink._id }}?_method=DELETE" method="POST">
-                        <input type="submit" value="Delete {{ drink.strDrink }}?" class="btn btn-danger">
-                    </form>
-                </div>  
-                <div class="card-body">
-                    <p class="card-text">
-                        glass: {{ drink.strGlass }}
-                    </p>
-                    <p class="card-text">
-                        Category: {{ drink.strCategory }}
-                    </p>
-                    <p class="card-text">
-                        {% if drink.strAlcoholic == true %}
-                            Alcoholic
-                        {% endif %}
-                        {% if drink.strAlcoholic == false %}
-                            Non-Alcoholic
-                        {% endif %}
-                    </p>
-                    <p class="card-text">
-                        Drink instructions: {{drink.strInstructions}}
-                    </p>
-                    <p class="card-text">
-                        Required glass: {{drink.strGlass}}
-                    </p>
-                    <p class="card-text">
-                        Drink ingredients: 
-                        <ul>
-                                <li class="list-unstyled" >{{drink.strIngredient1}} {{drink.strMeasure1}}</li>
-                                <li class="list-unstyled" >{{drink.strIngredient2}} {{drink.strMeasure2}}</li>
-                                <li class="list-unstyled" >{{drink.strIngredient3}} {{drink.strMeasure3}}</li>
-                                <li class="list-unstyled" >{{drink.strIngredient4}} {{drink.strMeasure4}}</li>
-                                <li class="list-unstyled" >{{drink.strIngredient5}} {{drink.strMeasure5}}</li>
-                                <li class="list-unstyled" >{{drink.strIngredient6}} {{drink.strMeasure6}}</li>
-                                <li class="list-unstyled" >{{drink.strIngredient7}} {{drink.strMeasure7}}</li>
-                                <li class="list-unstyled" >{{drink.strIngredient8}} {{drink.strMeasure8}}</li>
-                                <li class="list-unstyled" >{{drink.strIngredient9}} {{drink.strMeasure9}}</li>
-                                <li class="list-unstyled" >{{drink.strIngredient10}} {{drink.strMeasure10}}</li>
-                                <li class="list-unstyled" >{{drink.strIngredient11}} {{drink.strMeasure11}}</li>
-                                <li class="list-unstyled" >{{drink.strIngredient12}} {{drink.strMeasure12}}</li>
-                                <li class="list-unstyled" >{{drink.strIngredient13}} {{drink.strMeasure13}}</li>
-                                <li class="list-unstyled" >{{drink.strIngredient14}} {{drink.strMeasure14}}</li>
-                                <li class="list-unstyled" >{{drink.strIngredient15}} {{drink.strMeasure15}}</li>
-                            </ul>
+            {% if drink.created == true %}
+            <br>
+                <div class="card" style="width: 30rem;">
+                    <h5 class="card-header">{{ drink.strDrink}}</h5>
+                    <div class="btn-group" role="group" aria-label="Basic example">
+                        <a href="/drink/{{ drink._id }}/edit" class="btn btn-primary">Edit {{ drink.strDrink }}</a>
+                        <form action="/drink/{{ drink._id }}?_method=DELETE" method="POST">
+                            <input type="submit" value="Delete {{ drink.strDrink }}?" class="btn btn-danger">
+                        </form>
+                    </div>  
+                    <div class="card-body">
+                        <p class="card-text">
+                            glass: {{ drink.strGlass }}
                         </p>
-                        <img src="https://i.imgur.com/PvKDdgF.jpeg" width="100px" height="100px"></a>
-                    </div>
-            </div>
-        <br>
-        {% endif %}
+                        <p class="card-text">
+                            Category: {{ drink.strCategory }}
+                        </p>
+                        <p class="card-text">
+                            {% if drink.strAlcoholic == true %}
+                                Alcoholic
+                            {% endif %}
+                            {% if drink.strAlcoholic == false %}
+                                Non-Alcoholic
+                            {% endif %}
+                        </p>
+                        <p class="card-text">
+                            Drink instructions: {{drink.strInstructions}}
+                        </p>
+                        <p class="card-text">
+                            Required glass: {{drink.strGlass}}
+                        </p>
+                        <p class="card-text">
+                            Drink ingredients: 
+                            <ul>
+                                    <li class="list-unstyled" >{{drink.strIngredient1}} {{drink.strMeasure1}}</li>
+                                    <li class="list-unstyled" >{{drink.strIngredient2}} {{drink.strMeasure2}}</li>
+                                    <li class="list-unstyled" >{{drink.strIngredient3}} {{drink.strMeasure3}}</li>
+                                    <li class="list-unstyled" >{{drink.strIngredient4}} {{drink.strMeasure4}}</li>
+                                    <li class="list-unstyled" >{{drink.strIngredient5}} {{drink.strMeasure5}}</li>
+                                    <li class="list-unstyled" >{{drink.strIngredient6}} {{drink.strMeasure6}}</li>
+                                    <li class="list-unstyled" >{{drink.strIngredient7}} {{drink.strMeasure7}}</li>
+                                    <li class="list-unstyled" >{{drink.strIngredient8}} {{drink.strMeasure8}}</li>
+                                    <li class="list-unstyled" >{{drink.strIngredient9}} {{drink.strMeasure9}}</li>
+                                    <li class="list-unstyled" >{{drink.strIngredient10}} {{drink.strMeasure10}}</li>
+                                    <li class="list-unstyled" >{{drink.strIngredient11}} {{drink.strMeasure11}}</li>
+                                    <li class="list-unstyled" >{{drink.strIngredient12}} {{drink.strMeasure12}}</li>
+                                    <li class="list-unstyled" >{{drink.strIngredient13}} {{drink.strMeasure13}}</li>
+                                    <li class="list-unstyled" >{{drink.strIngredient14}} {{drink.strMeasure14}}</li>
+                                    <li class="list-unstyled" >{{drink.strIngredient15}} {{drink.strMeasure15}}</li>
+                                </ul>
+                            </p>
+                            <img src="https://i.imgur.com/PvKDdgF.jpeg" width="100px" height="100px"></a>
+                        </div>
+                </div>
+            <br>
+            {% endif %}
         {%endfor%}
         
     {% endblock %}

@@ -1,22 +1,28 @@
 {% layout "layout.liquid" %}
 {% block content %}
     <h1>All my favorited Drinks</h1>
+    <div class="container-md">
+        <div class="row">
     {%for drink in drinks%}
+    <br>
         {% if drink.idDrink > 0 %}
-            <div class="container-md">
-                <h1>Drink name: {{drink.strDrink}}</h1>
-                <h2>Drink category: {{drink.strCategory}}</h2>
-                <h3>
+        <div class="col-md-3" style="padding: 4px;">
+            <div class="card" style="width: mx-auto; padding: 4px; color: blue;">
+                <h5>Drink name: </h5>
+                    <p>{{drink.strDrink}}</p>
+                <h5>Drink category: </h5>
+                    <p>{{drink.strCategory}}</p>
+                <h5>
                     {% if drink.strAlcoholic == true %}
                         Alcoholic
                     {% endif %}
                     {% if drink.strAlcoholic == false %}
                         Non-Alcoholic
                     {% endif %}
-                </h3>
+                </h5>
                 <img alt= "One of your favorite drinks!" src="{{drink.strDrinkThumb}}" width="250px" height="250px">
 
-                <h2>Drink ingredients: </h2>
+                <h5>Drink ingredients: </h5>
                 <ul>
                     <li class="list-unstyled" >{{drink.strIngredient1}} {{drink.strMeasure1}}</li>
                     <li class="list-unstyled" >{{drink.strIngredient2}} {{drink.strMeasure2}}</li>
@@ -35,11 +41,15 @@
                     <li class="list-unstyled" >{{drink.strIngredient15}} {{drink.strMeasure15}}</li>
                 </ul>
 
-                <h3>Drink instructions: </h3>
-                <h5>{{drink.strInstructions}}</h5>
+                <h5>Drink instructions: </h5>
+                    <p>{{drink.strInstructions}}</p>
 
-                <h4>Required glass: {{drink.strGlass}}</h4>
+                <h5>Required glass: </h5>
+                    <p> {{drink.strGlass}}</p>
+            </div>
             </div>
         {% endif %}
     {%endfor%}
+        </div>
+    </div>
 {%endblock %}
